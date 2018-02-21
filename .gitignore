@@ -1,0 +1,6 @@
+
+*.js
+
+lib/CGF/
+
+mongoose-free-6\.9\.exe
