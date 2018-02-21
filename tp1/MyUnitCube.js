@@ -1,5 +1,5 @@
 /**
-* MyObject
+* MyUnitCube
 * @param gl {WebGLRenderingContext}
 * @constructor
 */
@@ -25,8 +25,8 @@ class MyUnitCube extends CGFobject
     ];
 
     this.indices = [
-      2, 1, 0,
-      1, 2, 3,
+      0, 1, 2,
+      3, 2, 1,
 
       6, 5, 4,
       5, 6 , 7,
@@ -34,9 +34,14 @@ class MyUnitCube extends CGFobject
       2, 7, 6,
       2, 3, 7,
 
-      0, 5, 4,
-      0, 1, 5
+      4, 5, 0,
+      5, 1, 0,
 
+      5, 7, 1,
+      7, 3, 1,
+
+      0, 6, 4,
+      0, 2, 6
     ];
 
     this.primitiveType=this.scene.gl.TRIANGLES;
