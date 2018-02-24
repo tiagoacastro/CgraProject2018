@@ -13,6 +13,7 @@ class MyUnitCubeQuad extends CGFobject
   };
 
   display(){
+
     this.scene.translate(0,0,0.5);
     this.quad.display();
 
