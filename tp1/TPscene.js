@@ -123,15 +123,22 @@ class TPscene extends CGFscene
 
 
         // ---- BEGIN Primitive drawing section
-        this.obj.scene.pushMatrix();
-        this.obj.scene.translate(1.5,0.1,1.5);
 
+
+        this.obj.scene.pushMatrix();
+
+        //Put the table in correct position, centered on the floor
+        this.obj.scene.translate(4,0.1,3);
+        
+        //display the table
         this.obj.display();
 
         this.obj.scene.popMatrix();
-       
-       
-        this.obj2.display();
+       this.obj2.scene.translate(4,0.05,3);
+        //display the floor
+       this.obj2.display();
+
+     
        
 
         // ---- END Primitive drawing section

@@ -17,10 +17,7 @@ class myTable extends CGFobject
   display(){
     this.scene.pushMatrix();
 
-    this.scene.translate(4.7,0,0);
-    this.leg.display();
-
-    this.scene.translate(0,0,2.7);
+    this.scene.translate(2.35,1.75,1.35);
     this.leg.display();
 
     this.scene.translate(-4.7,0,0);
@@ -28,12 +25,19 @@ class myTable extends CGFobject
 
     this.scene.translate(0,0,-2.7);
     this.leg.display();
+
+    this.scene.translate(4.7,0,0);
+    this.leg.display();
     
+    this.scene.popMatrix();
+    this.scene.pushMatrix();
+
+    
+    this.scene.translate(0,3.65,0);
     this.scene.scale(5,0.3,3);
-    this.scene.translate(0.5,12.15,0.5);
 
     this.quad.display();
-
+  
     this.scene.popMatrix();
   }
 

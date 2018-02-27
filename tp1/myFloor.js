@@ -15,8 +15,8 @@ class myFloor extends CGFobject
   display(){
     this.scene.pushMatrix();
 
+    //Floor located on the origin where it is suposed to be
     this.scene.scale(8,0.1,6);
-    this.scene.translate(0.5,0.5,0.5);
 
     this.quad.display();
 
