@@ -4,7 +4,7 @@
 * @constructor
 */
 
-class myTable extends CGFobject
+class MyTable extends CGFobject
 {
   constructor(scene) {
     super(scene);
@@ -28,16 +28,16 @@ class myTable extends CGFobject
 
     this.scene.translate(4.7,0,0);
     this.leg.display();
-    
+
     this.scene.popMatrix();
     this.scene.pushMatrix();
 
-    
+
     this.scene.translate(0,3.65,0);
     this.scene.scale(5,0.3,3);
 
     this.quad.display();
-  
+
     this.scene.popMatrix();
   }
 
