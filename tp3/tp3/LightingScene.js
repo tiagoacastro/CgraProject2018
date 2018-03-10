@@ -119,11 +119,11 @@ class LightingScene extends CGFscene
 
 		//this.materialDefault.apply();
 
-		this.prism.display();
-
 		// ---- END Background, camera and axis setup
 
 		// ---- BEGIN Scene drawing section
+
+		this.prism.display();
 		/*
 		// Floor
 		this.pushMatrix();
