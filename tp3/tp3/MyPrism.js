@@ -43,8 +43,8 @@ class MyPrism extends CGFobject
             this.vertices.push(Math.cos(2 * Math.PI * i / this.slices), Math.sin(2 * Math.PI * i / this.slices), j/this.stacks);
             this.vertices.push(Math.cos(2 * Math.PI * (i+1) / this.slices), Math.sin(2 * Math.PI * (i+1) / this.slices), j/this.stacks);
 
-            this.normals.push(Math.cos((2 * Math.PI * i / this.slices + 2 * Math.PI * i / this.slices)), Math.sin((2 * Math.PI * i / this.slices + 2 * Math.PI * i / this.slices)), 0);
-            this.normals.push(Math.cos((2 * Math.PI * i / this.slices + 2 * Math.PI * i / this.slices)), Math.sin((2 * Math.PI * i / this.slices + 2 * Math.PI * i / this.slices)), 0);
+            this.normals.push(Math.cos(2 * Math.PI * i / this.slices + Math.PI / this.slices), Math.sin((2 * Math.PI * i / this.slices + Math.PI / this.slices)), 0);
+            this.normals.push(Math.cos(2 * Math.PI * i / this.slices + Math.PI / this.slices), Math.sin((2 * Math.PI * i / this.slices + Math.PI / this.slices)), 0);
     }
   }
 
