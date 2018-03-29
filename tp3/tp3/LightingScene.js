@@ -31,6 +31,8 @@ class LightingScene extends CGFscene
 
 		//prism
 		this.prism = new MyPrism(this, 8, 20);
+		//cylinder
+		this.cylinder = new MyCylinder(this, 30, 20);
 
 		// Scene elements
 		this.table = new MyTable(this);
@@ -130,6 +132,16 @@ class LightingScene extends CGFscene
 			this.translate(5,-12,0);
 			this.prism.display();
 		this.popMatrix();
+
+		//cylinder
+
+		this.pushMatrix();
+		this.translate(10,0,12);
+	this.scale(1,5,1);
+	this.rotate(-Math.PI/2,1,0,0);
+	this.cylinder.display();
+	this.popMatrix();
+
 
 		// Floor
 		this.pushMatrix();
