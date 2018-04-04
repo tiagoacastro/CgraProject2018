@@ -26,6 +26,12 @@ class MyTable extends CGFobject
     this.leg=new myLeg(this.scene);
     this.quad.initBuffers();
     this.leg.initBuffers();
+
+    this.tableAppearance = new CGFappearance(this.scene);
+    this.tableAppearance.loadTexture("../resources/images/table.png");
+    this.tableAppearance.setDiffuse(0.8,0.8,0.8,1);
+    this.tableAppearance.setSpecular(0.2,0.2,0.2,1);
+    this.tableAppearance.setShininess(10);
   };
 
   display(){
@@ -50,10 +56,9 @@ class MyTable extends CGFobject
     this.scene.translate(0,3.65,0);
     this.scene.scale(5,0.3,3);
     this.materialC.apply();
+    this.tableAppearance.apply();
     this.quad.display();
 
     this.scene.popMatrix();
   }
-
-
 };
