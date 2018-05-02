@@ -83,6 +83,10 @@ class LightingScene extends CGFscene
 		this.boardAppearance.setDiffuse(0.2,0.2,0.2,1);
 		this.boardAppearance.setSpecular(0.6,0.6,0.6,1);
 		this.boardAppearance.setShininess(120);
+
+		//time
+    this.firstTime=1;
+    this.setUpdatePeriod(100);
 	};
 
 	initCameras()
@@ -123,6 +127,20 @@ class LightingScene extends CGFscene
 			this.lights[i].update();
 	}
 
+	update(currTime)
+	{
+    if(this.firstTime == 1){
+      this.lastTime = currTime;
+      this.firstTime=0;
+    }
+
+    if(this.firstTime==0){
+      this.lastTime = this.lastTime;
+      this.deltaTime = currTime - this.lastTime;
+      this.lastTime = currTime;
+      this.clock.update(this.deltaTime);
+    }
+	}
 
 	display()
 	{

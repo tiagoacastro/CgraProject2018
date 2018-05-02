@@ -59,4 +59,19 @@ this.hourPointer.setAngle(90);
     this.hourPointer.display();
     this.scene.popMatrix();
  };
+
+ update(deltaTime){
+
+  let time = deltaTime/1000;
+
+  let secAngle=(this.secPointer.angle + time * 360/60)%360;
+  let minAngle=(this.minPointer.angle + time * 360/60/60)%360;
+  let hourAngle=(this.hourPointer.angle + time * 360/60/60/12)%360;
+
+  this.secPointer.setAngle(secAngle);
+  this.minPointer.setAngle(minAngle);
+  this.hourPointer.setAngle(hourAngle);
+
+
+};
 }
