@@ -84,9 +84,14 @@ class LightingScene extends CGFscene
 		this.boardAppearance.setSpecular(0.6,0.6,0.6,1);
 		this.boardAppearance.setShininess(120);
 
+		this.light0 = true;
+		this.light1 = true;
+		this.light2 = true;
+		this.light3 = true;
+
 		//time
-    this.firstTime=1;
-    this.setUpdatePeriod(100);
+		this.firstTime=1;
+		this.setUpdatePeriod(100);
 	};
 
 	initCameras()
