@@ -24,7 +24,7 @@ class MyCylinder extends CGFobject
     	for(let i=0; i < this.slices; i++){
          this.vertices.push(Math.cos(ang *i),Math.sin(ang*i),j*1/this.stacks);
          this.normals.push(Math.cos(i*ang),Math.sin(i*ang),0);
-				 this.texCoords.push(Math.cos(ang *i),Math.sin(ang*i),j*1/this.stacks);
+				 this.texCoords.push(i/this.slices,j/this.stacks);
        }
    	}
 

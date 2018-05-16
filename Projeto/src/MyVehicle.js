@@ -8,6 +8,7 @@ class MyVehicle extends CGFobject
 		//Body constructor
 		this.body = new MyUnitCubeQuad(scene, 0, 1, 0, 1);
 		this.wheel = new MyWheel(scene);
+		this.glass = new MyQuad(scene);
 
 		this.bodyAppearance = new CGFappearance(this.scene);
     this.bodyAppearance.loadTexture("../resources/images/stoneBrickMinecraft.png");
@@ -16,6 +17,14 @@ class MyVehicle extends CGFobject
 		this.bodyAppearance.setDiffuse(0.6,0.6,0.6,1);
 		this.bodyAppearance.setSpecular(0,0.2,0.8,1);
 		this.bodyAppearance.setShininess(120);
+
+		this.glassAppearance = new CGFappearance(this.scene);
+    this.glassAppearance.loadTexture("../resources/images/glass.png");
+		this.glassAppearance.setTextureWrap("CLAMP_TO_EDGE", "CLAMP_TO_EDGE");
+    this.glassAppearance.setAmbient(0.3,0.3,0.3,1);
+		this.glassAppearance.setDiffuse(0.6,0.6,0.6,1);
+		this.glassAppearance.setSpecular(0,0.2,0.8,1);
+		this.glassAppearance.setShininess(120);
 
 		this.initBuffers();
 	};
@@ -56,6 +65,14 @@ class MyVehicle extends CGFobject
 		 this.scene.rotate(1.57,0,1,0);
     this.wheel.display();
     this.scene.popMatrix();
+
+		this.scene.pushMatrix();
+		this.scene.rotate(1.57,0,1,0);
+		this.scene.scale(-0.5,-0.8,2.5);
+		this.scene.translate(0.8,-0.8,-0.5);
+		this.glassAppearance.apply();
+	 this.glass.display();
+	 this.scene.popMatrix();
 
 	}
 }

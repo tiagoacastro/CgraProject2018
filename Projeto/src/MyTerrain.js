@@ -13,6 +13,8 @@ class MyTerrain extends Plane
 		this.terrainAppearance.setSpecular(0,0.2,0.8,1);
 		this.terrainAppearance.setShininess(120);
 
+
+
 		this.x = 0;
 		this.y = 0;
 		this.z = 0;
