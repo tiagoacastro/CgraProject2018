@@ -13,10 +13,12 @@ class LightingScene extends CGFscene
 		if (this.gui.isKeyPressed("KeyW")){
 			text+=" W ";
 			keysPressed=true;
+			this.vehicle.update(this.speed, true);
 		}
 		if (this.gui.isKeyPressed("KeyS")){
 			text+=" S ";
 			keysPressed=true;
+			this.vehicle.update(this.speed, false);
 		}
 		if (keysPressed)
 			console.log(text);
@@ -54,6 +56,8 @@ class LightingScene extends CGFscene
 		this.light3 = true;
 
 		this.axisOn = false;
+
+		this.speed = 1;
 
 		this.axisDisplay = function(){
 		this.axisOn = !(this.axisOn);
@@ -93,7 +97,7 @@ class LightingScene extends CGFscene
 		this.lights[1].enable();
 	};
 
-	update() {
+	update(currTime) {
 		this.checkKeys();
 	}
 
