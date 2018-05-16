@@ -70,24 +70,24 @@ class MyVehicle extends CGFobject
     	this.scene.pushMatrix();
 		this.scene.translate(-1.5,-0.75,1);
 		this.scene.rotate(1.57,0,1,0);
-		this.scene.rotate(this.rotateWheel,1,0,0);
+		this.scene.rotate(this.rotateWheel,0,0,1);
    		this.wheel.display();
     	this.scene.popMatrix();
 
      	this.scene.pushMatrix();
-		 this.scene.translate(-1.5,-0.75,-1);
-		 this.scene.rotate(1.57,0,1,0);
-		 this.scene.rotate(this.rotateWheel,1,0,0);
+		this.scene.translate(-1.5,-0.75,-1);
+		this.scene.rotate(1.57,0,1,0);
+		this.scene.rotate(this.rotateWheel,0,0,1);
     	this.wheel.display();
     	this.scene.popMatrix();
 
 		this.scene.pushMatrix();
 		this.scene.scale(2,0.8,2);
-    this.scene.rotate(-Math.PI/6,1,0,0);
-    this.scene.translate(0,0.8,1);
-    this.glassAppearance.apply();
-   this.glass.display();
-   this.scene.popMatrix();
+    	this.scene.rotate(-Math.PI/6,1,0,0);
+    	this.scene.translate(0,0.8,1);
+    	this.glassAppearance.apply();
+   		this.glass.display();
+   		this.scene.popMatrix();
 
 		this.scene.popMatrix();
 
