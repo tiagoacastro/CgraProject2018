@@ -9,6 +9,7 @@ class MyVehicle extends CGFobject
 		this.body = new MyUnitCubeQuad(scene, 0, 1, 0, 1);
 		this.wheel = new MyWheel(scene);
 		this.glass = new MyQuad(scene);
+		//this.triangle = new MyTriangle(scene, 0, 1, 0, 1);
 
 		this.bodyAppearance = new CGFappearance(this.scene);
    	this.bodyAppearance.loadTexture("../resources/images/stoneBrickMinecraft.png");

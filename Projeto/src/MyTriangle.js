@@ -1,7 +1,7 @@
 class MyTriangle extends CGFobject
 {
   constructor(scene, minS, maxS, minT, maxT) {
-      CGFobject.call(this, scene);
+      super(scene);
 
       this.minS = minS || 0;
       this.maxS = maxS || 1;
