@@ -7,6 +7,21 @@ class LightingScene extends CGFscene
 		super();
 	};
 	
+	checkKeys() {
+		var text="Keys pressed: ";
+		var keysPressed=false;
+		if (this.gui.isKeyPressed("KeyW")){
+			text+=" W ";
+			keysPressed=true;
+		}
+		if (this.gui.isKeyPressed("KeyS")){
+			text+=" S ";
+			keysPressed=true;
+		}
+		if (keysPressed)
+			console.log(text);
+		};
+
 	init(application)
 	{
 		super.init(application);
@@ -75,17 +90,16 @@ class LightingScene extends CGFscene
 		this.lights[1].setDiffuse(1.0, 1.0, 1.0, 1.0);
 		this.lights[1].enable();
 	};
+	
+	update() {
+		this.checkKeys();
+	}
 
 	updateLights()
 	{
 		for (var i = 0; i < this.lights.length; i++)
 			this.lights[i].update();
 	}
-
-	doSomething() {
-		console.log("Doing something...");
-	};
-
 
 	display()
 	{
@@ -124,7 +138,8 @@ class LightingScene extends CGFscene
 
 		// Update all lights used
 		this.updateLights();
-
+		this.update();
+		
 		// Draw axis
 		if (this.axisOn)
 		this.axis.display();
