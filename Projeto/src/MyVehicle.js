@@ -38,7 +38,7 @@ class MyVehicle extends CGFobject
 
 	this.z = this.z + speed;
 
-	this.rotateWheel = 2*speed;
+	this.rotateWheel = this.rotateWheel + 2*speed;
 
 	};
 
