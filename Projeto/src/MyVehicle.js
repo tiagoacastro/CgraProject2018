@@ -19,7 +19,7 @@ class MyVehicle extends CGFobject
 		this.bodyAppearance.setShininess(120);
 
 		this.glassAppearance = new CGFappearance(this.scene);
-    this.glassAppearance.loadTexture("../resources/images/glass.png");
+    this.glassAppearance.loadTexture("../resources/images/frosted_glass.jpg");
 		this.glassAppearance.setTextureWrap("CLAMP_TO_EDGE", "CLAMP_TO_EDGE");
     this.glassAppearance.setAmbient(0.3,0.3,0.3,1);
 		this.glassAppearance.setDiffuse(0.6,0.6,0.6,1);
@@ -43,7 +43,7 @@ class MyVehicle extends CGFobject
 
 		this.scene.pushMatrix();
 		this.scene.translate(this.x,this.y,this.z);
-		
+
 		this.scene.pushMatrix();
     	this.scene.scale(2.5,1.5,4);
 		this.bodyAppearance.apply();
@@ -73,6 +73,14 @@ class MyVehicle extends CGFobject
 		 this.scene.rotate(1.57,0,1,0);
     this.wheel.display();
     this.scene.popMatrix();
+
+		this.scene.pushMatrix();
+		this.scene.scale(2,0.8,2);
+    this.scene.rotate(-Math.PI/6,1,0,0);
+    this.scene.translate(0,0.8,1);
+    this.glassAppearance.apply();
+   this.glass.display();
+   this.scene.popMatrix();
 
 		this.scene.popMatrix();
 

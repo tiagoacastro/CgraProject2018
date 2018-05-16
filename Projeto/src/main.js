@@ -15,6 +15,7 @@ serialInclude([
 	'MyWheel.js',
 	'MyCircle.js',
 	'MyPrism.js',
+	'MyTriangle.js',
 
 	main=function() {
 		var app = new CGFapplication(document.body);
