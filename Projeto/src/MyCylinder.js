@@ -16,6 +16,7 @@ class MyCylinder extends CGFobject
     this.vertices = [];
     this.indices = [];
     this.normals = [];
+		this.texCoords = [];
 
     var ang=2*Math.PI/this.slices;
 
@@ -23,6 +24,7 @@ class MyCylinder extends CGFobject
     	for(let i=0; i < this.slices; i++){
          this.vertices.push(Math.cos(ang *i),Math.sin(ang*i),j*1/this.stacks);
          this.normals.push(Math.cos(i*ang),Math.sin(i*ang),0);
+				 this.texCoords.push(Math.cos(ang *i),Math.sin(ang*i),j*1/this.stacks);
        }
    	}
 

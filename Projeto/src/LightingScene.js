@@ -6,7 +6,7 @@ class LightingScene extends CGFscene
 	{
 		super();
 	};
-	
+
 	checkKeys() {
 		var text="Keys pressed: ";
 		var keysPressed=false;
@@ -29,6 +29,8 @@ class LightingScene extends CGFscene
 		this.initCameras();
 
 		this.initLights();
+
+		this.enableTextures(true);
 
 		//this.option1=true; this.option2=false; this.speed=3;
 
@@ -90,7 +92,7 @@ class LightingScene extends CGFscene
 		this.lights[1].setDiffuse(1.0, 1.0, 1.0, 1.0);
 		this.lights[1].enable();
 	};
-	
+
 	update() {
 		this.checkKeys();
 	}
@@ -139,22 +141,21 @@ class LightingScene extends CGFscene
 		// Update all lights used
 		this.updateLights();
 		this.update();
-		
+
 		// Draw axis
 		if (this.axisOn)
 		this.axis.display();
-		
+
 		this.pushMatrix();
 		this.translate(0,1.2,0);
 		this.vehicle.display();
 		this.popMatrix();
-		/*
+
 		this.pushMatrix();
 		this.rotate(-1.57,1,0,0);
 		this.scale(50,50,1);
 		this.terrain.display();
 		this.popMatrix();
-		*/
 
 		this.materialDefault.apply();
 

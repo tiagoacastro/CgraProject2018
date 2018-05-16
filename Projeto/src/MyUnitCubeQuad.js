@@ -6,9 +6,9 @@
 
 class MyUnitCubeQuad extends CGFobject
 {
-  constructor(scene) {
+  constructor(scene, minS, maxS, minT, maxT) {
     super(scene);
-    this.quad=new MyQuad(this.scene);
+    this.quad=new MyQuad(this.scene, minS, maxS, minT, maxT);
     this.quad.initBuffers();
   };
 
