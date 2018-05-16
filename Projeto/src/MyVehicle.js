@@ -20,9 +20,9 @@ class MyVehicle extends CGFobject
 		this.bodyAppearance.setShininess(120);
 
 		this.glassAppearance = new CGFappearance(this.scene);
-    this.glassAppearance.loadTexture("../resources/images/frosted_glass.jpg");
+    	this.glassAppearance.loadTexture("../resources/images/frosted_glass.jpg");
 		this.glassAppearance.setTextureWrap("CLAMP_TO_EDGE", "CLAMP_TO_EDGE");
-    this.glassAppearance.setAmbient(0.3,0.3,0.3,1);
+    	this.glassAppearance.setAmbient(0.3,0.3,0.3,1);
 		this.glassAppearance.setDiffuse(0.6,0.6,0.6,1);
 		this.glassAppearance.setSpecular(0,0.2,0.8,1);
 		this.glassAppearance.setShininess(120);
@@ -30,13 +30,15 @@ class MyVehicle extends CGFobject
 		this.x = 0;
 		this.y =0;
 		this.z = 0;
+
+		this.rotateWheel = 0;
 	};
 
-	update (speed, forward) {
+	update (speed) {
 
-	if(forward)
 	this.z = this.z + speed;
-	else (this.z = this.z- speed);
+
+	this.rotateWheel = 2*speed;
 
 	};
 
@@ -54,26 +56,30 @@ class MyVehicle extends CGFobject
 		this.scene.pushMatrix();
 		this.scene.translate(1,-0.75,1);
 		this.scene.rotate(1.57,0,1,0);
+		this.scene.rotate(this.rotateWheel,0,0,1);
     	this.wheel.display();
     	this.scene.popMatrix();
 
     	this.scene.pushMatrix();
 		this.scene.translate(1,-0.75,-1);
 		this.scene.rotate(1.57,0,1,0);
-    this.wheel.display();
-    this.scene.popMatrix();
+		this.scene.rotate(this.rotateWheel,0,0,1);
+    	this.wheel.display();
+    	this.scene.popMatrix();
 
-    this.scene.pushMatrix();
+    	this.scene.pushMatrix();
 		this.scene.translate(-1.5,-0.75,1);
 		this.scene.rotate(1.57,0,1,0);
-    this.wheel.display();
-    this.scene.popMatrix();
+		this.scene.rotate(this.rotateWheel,1,0,0);
+   		this.wheel.display();
+    	this.scene.popMatrix();
 
-     this.scene.pushMatrix();
+     	this.scene.pushMatrix();
 		 this.scene.translate(-1.5,-0.75,-1);
 		 this.scene.rotate(1.57,0,1,0);
-    this.wheel.display();
-    this.scene.popMatrix();
+		 this.scene.rotate(this.rotateWheel,1,0,0);
+    	this.wheel.display();
+    	this.scene.popMatrix();
 
 		this.scene.pushMatrix();
 		this.scene.scale(2,0.8,2);
