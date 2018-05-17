@@ -6,7 +6,8 @@ class MyWindShield extends CGFobject
 		super(scene);
 
 		this.glass = new MyQuad(scene);
-		this.triangle = new MyTriangle(scene, 0, 1, 0, 1);
+		this.triangle = new MyTriangle(scene, 0, 1, 0, 1, 0);
+		this.triangle2 = new MyTriangle(scene, 0, 1, 0, 1, 1);
 		//this.prism = new MyPrism(scene, 3, 1);
 
 	};
@@ -44,7 +45,8 @@ class MyWindShield extends CGFobject
 		this.scene.rotate(Math.PI,0,1,0);
     this.scene.translate(0.5,1.05,1.25);
 		this.scene.rotate(Math.PI,0,1,0);
-		this.triangle.display();
+		this.scene.scale(-1,1,1);
+		this.triangle2.display();
    	this.scene.popMatrix();
 
 	}
