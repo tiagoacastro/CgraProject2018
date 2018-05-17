@@ -13,7 +13,7 @@ class MyUnitCubeQuad extends CGFobject
   };
 
   display(){
-
+    this.scene.pushMatrix();
     this.scene.translate(0,0,0.5);
     this.quad.display();
 
@@ -36,6 +36,7 @@ class MyUnitCubeQuad extends CGFobject
     this.scene.rotate(180*Math.PI/180.0,0,1,0);
     this.scene.translate(0,0,1);
     this.quad.display();
+    this.scene.popMatrix();
   }
 
 };

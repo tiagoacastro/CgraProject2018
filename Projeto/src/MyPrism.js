@@ -1,9 +1,3 @@
-/**
- * MyPrism
- * @param gl {WebGLRenderingContext}
- * @constructor
- */
-
 class MyPrism extends CGFobject
 {
 	constructor(scene, slices, stacks)
@@ -37,7 +31,7 @@ class MyPrism extends CGFobject
     this.vertices = [];
     this.indices = [];
     this.normals = [];
-		//this.texCoords = [];
+		this.texCoords = [];
 
     for (var j = 0; j <= this.stacks; j++) {
       for (var i = 0; i < this.slices; i++) {
@@ -47,8 +41,8 @@ class MyPrism extends CGFobject
             this.normals.push(Math.cos(2 * Math.PI * i / this.slices + Math.PI / this.slices), Math.sin((2 * Math.PI * i / this.slices + Math.PI / this.slices)), 0);
             this.normals.push(Math.cos(2 * Math.PI * i / this.slices + Math.PI / this.slices), Math.sin((2 * Math.PI * i / this.slices + Math.PI / this.slices)), 0);
 
-						//this.texCoords.push(i%2, j%2);
-						//this.texCoords.push(i%2, (j+1)%2);
+						this.texCoords.push(0+j%2, 0);
+						this.texCoords.push(0+j%2, 1);
     }
   }
 
@@ -59,6 +53,20 @@ class MyPrism extends CGFobject
     this.indices.push(i, i+1+this.slices*2, i+this.slices*2);
   }
 
+	/*this.vertices.push(0, 0, 0);
+	this.vertices.push(1, 0, 0);
+	this.vertices.push(0, 1, 0);
+
+	this.indices.push(numPontos, numPontos+1, numPontos+2);
+
+	this.normals.push(0, 0, 1);
+	this.normals.push(0, 0, 1);
+	this.normals.push(0, 0, 1);
+
+	this.texCoords.push(0,1);
+	this.texCoords.push(1,1);
+	this.texCoords.push(1,0);
+	this.texCoords.push(0,0);*/
 
 		this.primitiveType=this.scene.gl.TRIANGLES;
 

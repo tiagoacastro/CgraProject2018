@@ -8,8 +8,7 @@ class MyVehicle extends CGFobject
 		//Body constructor
 		this.body = new MyUnitCubeQuad(scene, 0, 1, 0, 1);
 		this.wheel = new MyWheel(scene);
-		this.glass = new MyQuad(scene);
-		//this.triangle = new MyTriangle(scene, 0, 1, 0, 1);
+		this.windShield = new MyWindShield(scene);
 
 		this.bodyAppearance = new CGFappearance(this.scene);
    	this.bodyAppearance.loadTexture("../resources/images/stoneBrickMinecraft.png");
@@ -20,9 +19,9 @@ class MyVehicle extends CGFobject
 		this.bodyAppearance.setShininess(120);
 
 		this.glassAppearance = new CGFappearance(this.scene);
-    	this.glassAppearance.loadTexture("../resources/images/frosted_glass.jpg");
+    this.glassAppearance.loadTexture("../resources/images/frosted_glass.jpg");
 		this.glassAppearance.setTextureWrap("CLAMP_TO_EDGE", "CLAMP_TO_EDGE");
-    	this.glassAppearance.setAmbient(0.3,0.3,0.3,1);
+    this.glassAppearance.setAmbient(0.3,0.3,0.3,1);
 		this.glassAppearance.setDiffuse(0.6,0.6,0.6,1);
 		this.glassAppearance.setSpecular(0,0.2,0.8,1);
 		this.glassAppearance.setShininess(120);
@@ -82,12 +81,15 @@ class MyVehicle extends CGFobject
     	this.scene.popMatrix();
 
 		this.scene.pushMatrix();
-		this.scene.scale(2,0.8,2);
-    	this.scene.rotate(-Math.PI/6,1,0,0);
-    	this.scene.translate(0,0.8,1);
-    	this.glassAppearance.apply();
-   		this.glass.display();
-   		this.scene.popMatrix();
+		/*this.scene.rotate(-Math.PI/2,0,1,0);
+		this.scene.scale(0.8,1.2,2);
+		this.scene.translate(1,0.2,-0.5);*/
+		/*this.scene.scale(2,0.8,1.8);
+    this.scene.rotate(-Math.PI/6,1,0,0);
+    this.scene.translate(0,0.8,1);*/
+    this.glassAppearance.apply();
+   	this.windShield.display();
+   	this.scene.popMatrix();
 
 		this.scene.popMatrix();
 
