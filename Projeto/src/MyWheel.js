@@ -36,22 +36,37 @@ class MyWheel extends CGFobject
     this.tireAppearance.loadTexture("../resources/images/tire.jpg");
 	this.tireAppearance.setTextureWrap("CLAMP_TO_EDGE", "CLAMP_TO_EDGE");
     this.tireAppearance.setAmbient(0.3,0.3,0.3,1);
-		this.tireAppearance.setDiffuse(0.6,0.6,0.6,1);
-		this.tireAppearance.setSpecular(0,0.2,0.8,1);
-		this.tireAppearance.setShininess(120);
+	this.tireAppearance.setDiffuse(0.6,0.6,0.6,1);
+	this.tireAppearance.setSpecular(0,0.2,0.8,1);
+	this.tireAppearance.setShininess(120);
+
+	this.angle = 0;
+	this.rotateWheel = 0;
 
  };
+
+ setAngle(angle){
+ 	this.angle = angle;
+ }
+
+ setRotateWheel(rotateWheel){7
+ this.rotateWheel = rotateWheel;
+ }
 
  display()
  {
    this.scene.pushMatrix();
    this.materialDefault.apply();
    this.scene.scale(0.5,0.5,0.5);
-	 this.tireAppearance.apply();
+   this.tireAppearance.apply();
+   this.scene.rotate(this.angle,0,1,0);
+   this.scene.rotate(this.rotateWheel,0,0,1);
    this.cylinder.display();
    this.scene.popMatrix();
 
    this.scene.pushMatrix();
+   this.scene.rotate(this.angle,0,1,0);
+    this.scene.rotate(this.rotateWheel,0,0,1);
    this.scene.rotate(3.14,1,0,0);
    this.scene.scale(0.5,0.5,0.5);
 	 this.wheelAppearance.apply();
@@ -59,9 +74,11 @@ class MyWheel extends CGFobject
    this.scene.popMatrix();
 
    this.scene.pushMatrix();
+   this.scene.rotate(this.angle,0,1,0);
+    this.scene.rotate(this.rotateWheel,0,0,1);
    this.scene.scale(0.5,0.5,0.5);
    this.scene.translate(0, 0, 1);
-	 this.wheelAppearance.apply();
+   this.wheelAppearance.apply();
    this.circle.display();
    this.scene.popMatrix();
 

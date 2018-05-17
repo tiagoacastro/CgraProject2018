@@ -76,7 +76,7 @@ class MyInterface extends CGFinterface {
 		
 		this.gui.add(this.scene, 'axisDisplay');
 
-		this.gui.add(this.scene, 'speed',0,1)
+		//this.gui.add(this.scene, 'speed',0,1);
 
 		this.initKeys();
 		
