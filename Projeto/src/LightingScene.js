@@ -71,7 +71,7 @@ class LightingScene extends CGFscene
 		this.axisOn = !(this.axisOn);
 		};
 
-		this.setUpdatePeriod(1000/60);
+		this.setUpdatePeriod(1000);
 	};
 
 	initCameras()
