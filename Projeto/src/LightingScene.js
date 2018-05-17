@@ -83,7 +83,6 @@ class LightingScene extends CGFscene
 	{
 		this.setGlobalAmbientLight(0.5,0.5,0.5, 1.0);
 
-
 		// Positions for four lights
 		this.lights[0].setPosition(4, 6, 1, 1);
 
