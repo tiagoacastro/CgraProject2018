@@ -49,7 +49,7 @@ class MyWheel extends CGFobject
  	this.angle = angle;
  }
 
- setRotateWheel(rotateWheel){7
+ setRotateWheel(rotateWheel){
  this.rotateWheel = rotateWheel;
  }
 
