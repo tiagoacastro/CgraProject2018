@@ -67,6 +67,9 @@ class LightingScene extends CGFscene
 
 		this.axisOn = false;
 
+		this.vehicleAppearances = [this.materialDefault];
+		this.currVehicleAppearance = 0;
+
 		this.axisDisplay = function(){
 		this.axisOn = !(this.axisOn);
 		};
@@ -114,8 +117,7 @@ class LightingScene extends CGFscene
 	}
 
 	display()
-	{
-
+	{	
 		if(this.light0)
 			this.lights[0].enable();
 		else
@@ -158,6 +160,7 @@ class LightingScene extends CGFscene
 
 		this.pushMatrix();
 		this.translate(0,1.2,0);
+		//this.vehicleAppearances[this.currVehicleAppearance].apply();
 		this.vehicle.display();
 		this.popMatrix();
 

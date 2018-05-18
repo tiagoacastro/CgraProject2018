@@ -78,6 +78,8 @@ class MyInterface extends CGFinterface {
 
 		//this.gui.add(this.scene, 'speed',0,1);
 
+		this.gui.add(this.scene, 'vehicleAppearances', { MaterialDefault:0});
+
 		this.initKeys();
 		
 		return true;
