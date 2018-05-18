@@ -29,10 +29,17 @@ class MyTriangle extends CGFobject
           2, 1, 0
       ];
 
+      if(this.side == 0)
       this.normals = [
           0, 0, 1,
           0, 0, 1,
           0, 0, 1
+      ];
+      else
+      this.normals = [
+          0, 0, -1,
+          0, 0, -1,
+          0, 0, -1
       ];
 
       this.texCoords = [
