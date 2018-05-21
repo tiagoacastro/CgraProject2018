@@ -5,10 +5,10 @@ class MyTerrain extends Plane
 		super(scene,8,0,10,0,10);
 
 		this.terrainAppearance = new CGFappearance(this.scene);
-    this.terrainAppearance.loadTexture("../resources/images/grassMinecraft.png");
-		this.terrainAppearance.setTextureWrap("REPEAT", "REPEAT");
+    	this.terrainAppearance.loadTexture("../resources/images/grassMinecraft.png");
+		//this.terrainAppearance.setTextureWrap("REPEAT", "REPEAT");
 
-    this.terrainAppearance.setAmbient(0.3,0.3,0.3,1);
+    	this.terrainAppearance.setAmbient(0.3,0.3,0.3,1);
 		this.terrainAppearance.setDiffuse(0.6,0.6,0.6,1);
 		this.terrainAppearance.setSpecular(0,0.2,0.8,1);
 		this.terrainAppearance.setShininess(120);

@@ -57,8 +57,27 @@ class LightingScene extends CGFscene
 		// Materials
 		this.materialDefault = new CGFappearance(this);
 
+		this.bodyAppearance = new CGFappearance(this);
+   		this.bodyAppearance.loadTexture("../resources/images/stoneBrickMinecraft.png");
+		this.bodyAppearance.setTextureWrap("REPEAT", "REPEAT");
+		this.bodyAppearance.setAmbient(0.3,0.3,0.3,1);
+		this.bodyAppearance.setDiffuse(0.6,0.6,0.6,1);
+		this.bodyAppearance.setSpecular(0,0.2,0.8,1);
+		this.bodyAppearance.setShininess(120);
+
+		this.fireAppearance = new CGFappearance(this);
+   		this.fireAppearance.loadTexture("../resources/images/fire.png");
+		//this.fireAppearance.setTextureWrap("REPEAT", "REPEAT");
+		this.fireAppearance.setAmbient(0.3,0.3,0.3,1);
+		this.fireAppearance.setDiffuse(0.6,0.6,0.6,1);
+		this.fireAppearance.setSpecular(0,0.2,0.8,1);
+		this.fireAppearance.setShininess(120);
+
+
+
 		this.vehicle = new MyVehicle(this);
 		this.terrain = new MyTerrain(this);
+		this.crane = new MyCrane(this);
 
 		this.light0 = true;
 		this.light1= true;
@@ -67,7 +86,7 @@ class LightingScene extends CGFscene
 
 		this.axisOn = false;
 
-		this.vehicleAppearances = [this.materialDefault];
+		this.vehicleAppearances = [this.materialDefault,this.bodyAppearance, this.fireAppearance];
 		this.currVehicleAppearance = 0;
 
 		this.axisDisplay = function(){
@@ -164,10 +183,14 @@ class LightingScene extends CGFscene
 		// Draw axis
 		if (this.axisOn)
 		this.axis.display();
-
+		
+		this.pushMatrix();
+		this.crane.display();
+		this.popMatrix();
+		
 		this.pushMatrix();
 		this.translate(0,1.2,0);
-		//this.vehicleAppearances[this.currVehicleAppearance].apply();
+		this.vehicle.setAppearance(this.currVehicleAppearance);
 		this.vehicle.display();
 		this.popMatrix();
 
