@@ -33,7 +33,8 @@ class LightingScene extends CGFscene
 		if (this.gui.isKeyPressed("KeyG")){
 			text+=" G ";
 			keysPressed=true;
-			this.crane.rotateOtherSide();
+			this.crane.animate(this.vehicle);
+			this.vehicleGrab = 1;
 		}
 		if (this.gui.isKeyPressed("KeyJ")){
 			text+=" J ";
@@ -83,9 +84,8 @@ class LightingScene extends CGFscene
 		this.fireAppearance.setSpecular(0,0.2,0.8,1);
 		this.fireAppearance.setShininess(120);
 
-
-
 		this.vehicle = new MyVehicle(this);
+		this.vehicleGrab = 0;
 		this.terrain = new MyTerrain(this);
 		this.crane = new MyCrane(this);
 
@@ -199,11 +199,13 @@ class LightingScene extends CGFscene
 		this.crane.display();
 		this.popMatrix();
 		
+		if (this.vehicleGrab == 0) {
 		this.pushMatrix();
 		this.translate(0,1.2,0);
 		this.vehicle.setAppearance(this.currVehicleAppearance);
 		this.vehicle.display();
 		this.popMatrix();
+		}
 
 		this.pushMatrix();
 		this.rotate(-1.57,1,0,0);

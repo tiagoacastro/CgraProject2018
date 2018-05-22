@@ -1,9 +1,10 @@
-class MyIman extends CGFobject
+class MyMagnet extends CGFobject
 {
 	constructor(scene, slices, stacks)
 	{
 		super(scene);
 
+		this.secCylinder = new MyWheel(this.scene,0);
 		this.wire = new MyCylinder(this.scene, 20,1);
 		this.metal = new MyWheel(this.scene,0);
 		this.tube = new MyPrism(this.scene,4,1);
@@ -21,8 +22,14 @@ class MyIman extends CGFobject
 
 		this.scene.pushMatrix();
 		this.scene.rotate(this.rotateV,0,0,1);
+
+		this.scene.pushMatrix();
+       
+		this.secCylinder.display();
+        this.scene.popMatrix();
 		
 		this.scene.pushMatrix();
+		this.scene.translate(0.23,-0.45,0.25);
         this.scene.rotate(Math.PI /2.0, 1,0,0);
         this.scene.rotate(Math.PI /4.0, 0,1,0);
         this.scene.scale(0.3,0.3,2);
@@ -30,17 +37,22 @@ class MyIman extends CGFobject
         this.scene.popMatrix();
 
 	    this.scene.pushMatrix();
-	    this.scene.translate(1.5,-1.2,0);
+	    this.scene.translate(1.73,-1.65,0.25);
+	    this.scene.rotate(-this.rotateV,0,0,1);
 	    this.scene.rotate(Math.PI/2.0,1,0,0);
-	   	this.scene.scale(0.05,0.05,1.5);
+	   	
+
+	    this.scene.pushMatrix();
+	    this.scene.translate(0,0,1.5);
+	    this.scene.scale(2,2,0.5);
+	    this.metal.display();
+	    this.scene.popMatrix();
+
+	    
+	    this.scene.scale(0.05,0.05,1.5);
 	    this.wire.display();
 	    this.scene.popMatrix();
 
-	    this.scene.pushMatrix();
-	    this.scene.translate(1.5,-2.5,0)
-	    this.scene.rotate(Math.PI/2.0,1,0,0);
-	    this.scene.scale(1,1,0.5);
-	    this.metal.display();
 	    this.scene.popMatrix();
 
 	}

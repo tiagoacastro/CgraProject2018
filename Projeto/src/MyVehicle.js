@@ -52,6 +52,9 @@ class MyVehicle extends CGFobject
 	setAppearance(appearance) {
 		this.appearance = appearance;
 	}
+	setY(y){
+		this.y = y;
+	}
 
 	update () {
 	this.z = this.z + this.speed* Math.cos(this.carOrientation);
@@ -66,7 +69,6 @@ class MyVehicle extends CGFobject
 	this.wheelAngle += 0.01;
 
 	this.frontWheel.setAngle(this.wheelAngle);
-	this.last = this.carOrientation;
 	this.carOrientation = this.carOrientation + (this.speed * this.wheelAngle)/5.0;
 	};
 
