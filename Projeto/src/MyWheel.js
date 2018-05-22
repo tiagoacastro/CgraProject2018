@@ -6,10 +6,11 @@
 
 class MyWheel extends CGFobject
 {
-	constructor(scene)
+	constructor(scene, texture)
 	{
 		super(scene);
-
+		
+		this.texture = texture;
 		this.initBuffers();
 	};
 
@@ -23,7 +24,8 @@ class MyWheel extends CGFobject
 
     this.circle = new MyCircle(this.scene,30);
     this.circle.initBuffers();
-
+	
+	if(this.texture){
 	this.wheelAppearance = new CGFappearance(this.scene);
     this.wheelAppearance.loadTexture("../resources/images/wheel.jpg");
 	this.wheelAppearance.setTextureWrap("CLAMP_TO_EDGE", "CLAMP_TO_EDGE");
@@ -39,6 +41,7 @@ class MyWheel extends CGFobject
 	this.tireAppearance.setDiffuse(0.6,0.6,0.6,1);
 	this.tireAppearance.setSpecular(0,0.2,0.8,1);
 	this.tireAppearance.setShininess(120);
+	}
 
 	this.angle = 0;
 	this.rotateWheel = 0;
@@ -58,6 +61,7 @@ class MyWheel extends CGFobject
    this.scene.pushMatrix();
    this.materialDefault.apply();
    this.scene.scale(0.5,0.5,0.5);
+   if(this.texture)
    this.tireAppearance.apply();
    this.scene.rotate(this.angle,0,1,0);
    this.scene.rotate(this.rotateWheel,0,0,1);
@@ -69,6 +73,7 @@ class MyWheel extends CGFobject
     this.scene.rotate(this.rotateWheel,0,0,1);
    this.scene.rotate(3.14,1,0,0);
    this.scene.scale(0.5,0.5,0.5);
+   if(this.texture)
 	 this.wheelAppearance.apply();
    this.circle.display();
    this.scene.popMatrix();
@@ -78,6 +83,7 @@ class MyWheel extends CGFobject
     this.scene.rotate(this.rotateWheel,0,0,1);
    this.scene.scale(0.5,0.5,0.5);
    this.scene.translate(0, 0, 1);
+   if(this.texture)
    this.wheelAppearance.apply();
    this.circle.display();
    this.scene.popMatrix();

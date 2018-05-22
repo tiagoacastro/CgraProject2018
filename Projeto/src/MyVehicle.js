@@ -21,8 +21,8 @@ class MyVehicle extends CGFobject
 		this.scene = scene;
 		//Body constructor
 		this.body = new MyUnitCubeQuad(scene, 0, 1, 0, 1);
-		this.frontWheel = new MyWheel(scene);
-		this.backWheel = new MyWheel(scene);
+		this.frontWheel = new MyWheel(scene,1);
+		this.backWheel = new MyWheel(scene,1);
 		this.windShield = new MyWindShield(scene);
 		this.lamp = new MyLamp(scene,60,10);
 

@@ -19,6 +19,7 @@ serialInclude([
 	'MyWindShield.js',
 	'MyLamp.js',
 	'MyCrane.js',
+	'MyIman.js',
 
 	main=function() {
 		var app = new CGFapplication(document.body);

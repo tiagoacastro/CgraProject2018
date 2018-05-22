@@ -30,6 +30,16 @@ class LightingScene extends CGFscene
 			keysPressed=true;
 			this.vehicle.moveRight();
 		}
+		if (this.gui.isKeyPressed("KeyG")){
+			text+=" G ";
+			keysPressed=true;
+			this.crane.rotateOtherSide();
+		}
+		if (this.gui.isKeyPressed("KeyJ")){
+			text+=" J ";
+			keysPressed=true;
+			this.crane.rotateDown();
+		}
 		if (keysPressed)
 			console.log(text);
 		};
@@ -134,6 +144,7 @@ class LightingScene extends CGFscene
 	update(currTime) {
 		this.checkKeys();
 		this.vehicle.update();
+		this.crane.update();
 	}
 
 	updateLights()
