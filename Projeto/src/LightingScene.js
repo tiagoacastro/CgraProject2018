@@ -145,6 +145,7 @@ class LightingScene extends CGFscene
 		this.checkKeys();
 		this.vehicle.update();
 		this.crane.update();
+		this.terrain.update();
 	}
 
 	updateLights()
@@ -154,7 +155,7 @@ class LightingScene extends CGFscene
 	}
 
 	display()
-	{	
+	{
 		if(this.light0)
 			this.lights[0].enable();
 		else
@@ -194,11 +195,11 @@ class LightingScene extends CGFscene
 		// Draw axis
 		if (this.axisOn)
 		this.axis.display();
-		
+
 		this.pushMatrix();
 		this.crane.display();
 		this.popMatrix();
-		
+
 		if (this.vehicleGrab == 0) {
 		this.pushMatrix();
 		this.translate(0,1.2,0);
