@@ -44,7 +44,7 @@ class MyCrane extends CGFobject
 	}
 
 	rotateDown(){
-		if(this.rotateV >= -Math.PI/3.0)
+		if(this.rotateV >= -Math.PI/3.5)
 		this.rotateV -= Math.PI/90.0;
 		else this.currState = 3;
 	}
@@ -55,9 +55,8 @@ class MyCrane extends CGFobject
 	}
 
 	vehicleToMagnet() {
-		this.vehicle.setY(2.8);
-		this.vehicle.carOrientation = Math.PI/2.0;
-
+		this.vehicle.setY(0.6);
+		//this.vehicle.carOrientation = Math.PI/2.0;
 		this.currState = 4;
 	}
 
@@ -87,6 +86,8 @@ class MyCrane extends CGFobject
 			case 5:
 				this.vehicleToGround();
     			this.scene.setVehicle(this.vehicle);
+    			this.currState = 0;
+    			break;
   			default :
 		}
 	}
@@ -126,7 +127,7 @@ class MyCrane extends CGFobject
 				this.scene.rotate(this.rotateCar,0,1,0);
 				this.scene.translate(-5,-1,10);
 				this.vehicle.display();
-        	} else {
+        	} else if (this.currState != 0) {
         		this.scene.popMatrix();
         		this.scene.pushMatrix();
 				this.scene.translate(0,1.2,0);

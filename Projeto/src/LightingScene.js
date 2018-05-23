@@ -23,18 +23,23 @@ class LightingScene extends CGFscene
 		if (this.gui.isKeyPressed("KeyA")){
 			text+=" A ";
 			keysPressed=true;
+			console.log(this.vehicle.x);
+
 			this.vehicle.moveLeft();
 		}
 		if (this.gui.isKeyPressed("KeyD")){
 			text+=" D ";
 			keysPressed=true;
 			this.vehicle.moveRight();
+			console.log(this.vehicle.z);
 		}
 		if (this.gui.isKeyPressed("KeyG")){
 			text+=" G ";
 			keysPressed=true;
+			if (this.vehicle.x >= -1 && this.vehicle.x <=1 && this.vehicle.z <= -8 && this.vehicle.z >=-10){ {}
 			this.crane.animate(this.vehicle);
 			this.vehicleGrab = 1;
+			} else console.log("The car is not in the right position");
 		}
 		if (this.gui.isKeyPressed("KeyJ")){
 			text+=" J ";
