@@ -7,7 +7,7 @@ class MyMagnet extends CGFobject
 		this.secCylinder = new MyWheel(this.scene,0);
 		this.wire = new MyCylinder(this.scene, 20,1);
 		this.metal = new MyWheel(this.scene,0);
-		this.tube = new MyPrism(this.scene,4,1);
+		this.tube = new MyUnitCubeQuad(this.scene);
 
 		this.rotateV = 0;
 
@@ -29,19 +29,16 @@ class MyMagnet extends CGFobject
         this.scene.popMatrix();
 		
 		this.scene.pushMatrix();
-		this.scene.translate(0.23,-0.45,0.25);
-        this.scene.rotate(Math.PI /2.0, 1,0,0);
-        this.scene.rotate(Math.PI /4.0, 0,1,0);
-        this.scene.scale(0.3,0.3,2);
+		this.scene.translate(1.45,0,0.25);
+        this.scene.scale(2,0.6,0.6);
         this.tube.display();
         this.scene.popMatrix();
 
 	    this.scene.pushMatrix();
-	    this.scene.translate(1.73,-1.65,0.25);
+	    this.scene.translate(2.5,-0,0.25);
 	    this.scene.rotate(-this.rotateV,0,0,1);
 	    this.scene.rotate(Math.PI/2.0,1,0,0);
 	   	
-
 	    this.scene.pushMatrix();
 	    this.scene.translate(0,0,1.5);
 	    this.scene.scale(2,2,0.5);

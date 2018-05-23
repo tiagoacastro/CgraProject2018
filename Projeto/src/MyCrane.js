@@ -24,7 +24,7 @@ class MyCrane extends CGFobject
 	rotatePickedUpCar() {
 		
 		if(this.rotateCar <= 3.0)
-			this.rotateCar +=0.025
+			this.rotateCar -=0.025
 	}
 
 	rotateToPickUpSide() {
@@ -37,12 +37,16 @@ class MyCrane extends CGFobject
 	rotateBack() {
 		this.rotateH = this.rotateH - 0.025;
 
+		this.rotatePickedUpCar();
+
 		if (this.rotateH <= 0.0)
-			this.currState = 4;
+			this.currState = 5;
 	}
 
 	rotateDown(){
-		this.rotateV += 0.1;
+		if(this.rotateV >= -Math.PI/3.0)
+		this.rotateV -= Math.PI/90.0;
+		else this.currState = 3;
 	}
 
 	animate(vehicle){
@@ -54,7 +58,7 @@ class MyCrane extends CGFobject
 		this.vehicle.setY(2.8);
 		this.vehicle.carOrientation = Math.PI/2.0;
 
-		this.currState = 3;
+		this.currState = 4;
 	}
 
 	vehicleToGround() {
@@ -62,7 +66,7 @@ class MyCrane extends CGFobject
 	}
 
 	update() {
-		
+		this.magnet.setRotateV(this.rotateV);
 		switch( this.currState ){
 			
 			case 1:
@@ -70,23 +74,19 @@ class MyCrane extends CGFobject
 				break;
 
 			case 2 : 
-				this.vehicleToMagnet();
-				this.currState = 3;
+				this.rotateDown();
     			break;
 
     		case 3 :
-    			this.rotateBack();
-    			this.rotatePickedUpCar();
-    		break;
+    			this.vehicleToMagnet();
+    			break;
 
     		case 4:
-    			this.vehicleToGround();
-    		break;
-
-  			case 5 : 
-  
-    		break;
-
+    			this.rotateBack();
+    			break;
+			case 5:
+				this.vehicleToGround();
+    			this.scene.setVehicle(this.vehicle);
   			default :
 		}
 	}
@@ -122,7 +122,6 @@ class MyCrane extends CGFobject
 			if(this.currState == 3) {
 				this.scene.popMatrix();
 				this.scene.pushMatrix();
-				this.scene.translate(0,1.2,0);
 				this.scene.translate(5,1,-10);
 				this.scene.rotate(this.rotateCar,0,1,0);
 				this.scene.translate(-5,-1,10);

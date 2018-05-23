@@ -103,7 +103,7 @@ class LightingScene extends CGFscene
 		this.axisOn = !(this.axisOn);
 		};
 
-		this.setUpdatePeriod(1000);
+		this.setUpdatePeriod(100);
 	};
 
 	initCameras()
@@ -151,6 +151,11 @@ class LightingScene extends CGFscene
 	{
 		for (var i = 0; i < this.lights.length; i++)
 			this.lights[i].update();
+	}
+
+	setVehicle(vehicle){
+		this.vehicle = vehicle;
+		this.vehicleGrab = 0;
 	}
 
 	display()

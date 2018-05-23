@@ -74,12 +74,12 @@ class MyVehicle extends CGFobject
 
 	moveForward(){
 		if (this.speed <0.75)
-		this.speed = this.speed + 0.0125;
+		this.speed = this.speed + 100/10000;
 	}
 
 	moveBackward(){
 		if (this.speed > -0.75)
-	this.speed = this.speed - 0.0125;
+	this.speed = this.speed - 100/10000;
 	}
 
 	moveLeft(){
