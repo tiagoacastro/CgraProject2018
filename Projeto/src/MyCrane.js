@@ -11,7 +11,7 @@ class MyCrane extends CGFobject
 		super(scene);
 
 		this.base = new MyWheel(this.scene,0);
-		this.first = new MyPrism(this.scene,4,1);
+		this.first = new MyUnitCubeQuad(this.scene);
 		this.magnet = new MyMagnet(this.scene);
 		this.vehicle = 0;
 		
@@ -19,6 +19,7 @@ class MyCrane extends CGFobject
 		this.rotateH = 0;
 		this.rotateV = 0;
 		this.currState = 0;
+		this.carInPlace = false;
 	};
 
 	rotatePickedUpCar() {
@@ -49,6 +50,17 @@ class MyCrane extends CGFobject
 		else this.currState = 3;
 	}
 
+	rotateUp(){
+		if(this.rotateV <= 0)
+		this.rotateV += Math.PI/90.0;
+		else {
+			this.currState = 0;
+			this.rotateH = 0;
+			this.rotateCar = 0;
+			this.carInPlace = false;
+		}
+	}
+
 	animate(vehicle){
 		this.vehicle = vehicle;
 		this.currState = 1;
@@ -56,12 +68,15 @@ class MyCrane extends CGFobject
 
 	vehicleToMagnet() {
 		this.vehicle.setY(0.6);
-		//this.vehicle.carOrientation = Math.PI/2.0;
 		this.currState = 4;
 	}
 
 	vehicleToGround() {
 		this.vehicle.setY(0);
+		if (!this.carInPlace) {
+			this.vehicle.carOrientation -= Math.PI;
+			this.carInPlace = true;
+		}
 	}
 
 	update() {
@@ -85,8 +100,10 @@ class MyCrane extends CGFobject
     			break;
 			case 5:
 				this.vehicleToGround();
+				this.vehicle.x = (Math.sin((Math.PI/8.0 )*7)+4.5)*2;
     			this.scene.setVehicle(this.vehicle);
-    			this.currState = 0;
+    			this.scene.lock = false;
+    			this.rotateUp();
     			break;
   			default :
 		}
@@ -106,10 +123,9 @@ class MyCrane extends CGFobject
         this.scene.popMatrix();
 
         this.scene.pushMatrix();
-        this.scene.translate(4.95,0.8,-10);
-        this.scene.rotate(-Math.PI /2.0, 1,0,0);
-        this.scene.rotate(Math.PI /8.0, 0,1,0);
-        this.scene.scale(0.3,0.3,7);
+        this.scene.translate(6.2,4,-10);
+        this.scene.rotate(-Math.PI /8.0, 0,0,1);
+        this.scene.scale(0.6,7,0.6);
         this.first.display();
         this.scene.popMatrix();
 
@@ -127,7 +143,7 @@ class MyCrane extends CGFobject
 				this.scene.rotate(this.rotateCar,0,1,0);
 				this.scene.translate(-5,-1,10);
 				this.vehicle.display();
-        	} else if (this.currState != 0) {
+        	} else if (this.currState != 0 && this.currState !=5) {
         		this.scene.popMatrix();
         		this.scene.pushMatrix();
 				this.scene.translate(0,1.2,0);

@@ -163,5 +163,7 @@ class MyVehicle extends CGFobject
 
 		this.scene.popMatrix();
 
+		console.log(this.carOrientation);
+
 	}
 }

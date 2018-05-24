@@ -23,7 +23,6 @@ class LightingScene extends CGFscene
 		if (this.gui.isKeyPressed("KeyA")){
 			text+=" A ";
 			keysPressed=true;
-			console.log(this.vehicle.x);
 
 			this.vehicle.moveLeft();
 		}
@@ -31,7 +30,6 @@ class LightingScene extends CGFscene
 			text+=" D ";
 			keysPressed=true;
 			this.vehicle.moveRight();
-			console.log(this.vehicle.z);
 		}
 		if (this.gui.isKeyPressed("KeyG")){
 			text+=" G ";
@@ -39,6 +37,7 @@ class LightingScene extends CGFscene
 			if (this.vehicle.x >= -1 && this.vehicle.x <=1 && this.vehicle.z <= -8 && this.vehicle.z >=-10){ {}
 			this.crane.animate(this.vehicle);
 			this.vehicleGrab = 1;
+			this.lock = true;
 			} else console.log("The car is not in the right position");
 		}
 		if (this.gui.isKeyPressed("KeyJ")){
@@ -100,6 +99,7 @@ class LightingScene extends CGFscene
 		this.light3 = true;
 
 		this.axisOn = false;
+		this.lock = false;
 
 		this.vehicleAppearances = [this.materialDefault,this.bodyAppearance, this.fireAppearance];
 		this.currVehicleAppearance = 0;
@@ -147,6 +147,7 @@ class LightingScene extends CGFscene
 	};
 
 	update(currTime) {
+		if (!this.lock)
 		this.checkKeys();
 		this.vehicle.update();
 		this.crane.update();
