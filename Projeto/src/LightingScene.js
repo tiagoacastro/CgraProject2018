@@ -35,6 +35,7 @@ class LightingScene extends CGFscene
 			text+=" G ";
 			keysPressed=true;
 			if (this.vehicle.x >= -1 && this.vehicle.x <=1 && this.vehicle.z <= -9 && this.vehicle.z >=-11){ {}
+			this.vehicle.speed = 0;
 			this.crane.animate(this.vehicle);
 			this.vehicleGrab = 1;
 			this.lock = true;

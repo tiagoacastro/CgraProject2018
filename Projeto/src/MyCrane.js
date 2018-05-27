@@ -19,6 +19,14 @@ class MyCrane extends CGFobject
 		this.rotateV = 0;
 		this.currState = 0;
 		this.carInPlace = false;
+
+		this.craneAppearance = new CGFappearance(this.scene);
+    	this.craneAppearance.loadTexture("../resources/images/crane.png");
+		this.craneAppearance.setTextureWrap("CLAMP_TO_EDGE", "CLAMP_TO_EDGE");
+    	this.craneAppearance.setAmbient(0.3,0.3,0.3,1);
+		this.craneAppearance.setDiffuse(0.6,0.6,0.6,1);
+		this.craneAppearance.setSpecular(0,0.2,0.8,1);
+		this.craneAppearance.setShininess(120);
 	};
 
 	rotatePickedUpCar() {
@@ -126,6 +134,7 @@ class MyCrane extends CGFobject
         this.scene.translate(6.2,4,-10);
         this.scene.rotate(-Math.PI /8.0, 0,0,1);
         this.scene.scale(0.6,7,0.6);
+        this.craneAppearance.apply();
         this.first.display();
         this.scene.popMatrix();
 
