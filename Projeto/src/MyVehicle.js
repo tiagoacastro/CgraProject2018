@@ -55,35 +55,44 @@ class MyVehicle extends CGFobject
 	this.frontWheel.setRotateWheel(this.rotateWheel);
 	this.backWheel.setRotateWheel(this.rotateWheel);
 
-	if (this.wheelAngle > 0)
-	this.wheelAngle -= Math.PI/300.0;
+	if (this.wheelAngle >0)
+	this.wheelAngle -= Math.PI/200.0;
 	else if (this.wheelAngle < 0)
-	this.wheelAngle += Math.PI/300.0;
+	this.wheelAngle += Math.PI/200.0;
+
+	if (this.wheelAngle <  Math.PI/100.0 && this.wheelAngle > - Math.PI/100.0)
+		this.wheelAngle = 0;
 
 	this.frontWheel.setAngle(this.wheelAngle);
 	this.carOrientation = this.carOrientation + (this.speed * this.wheelAngle)/5.0;
 	};
 
-	moveForward(){
-		if (this.speed <0.5)
-			this.speed = this.speed + 50/10000;
+	moveForward(deltaTime){
+
+		let time = deltaTime/1000;
+		if(this.speed <0.3)
+		this.speed = this.speed + time/2;
 	}
 
-	moveBackward(){
-		if (this.speed > -0.5)
-			this.speed = this.speed - 50/10000;
+	moveBackward(deltaTime){
+		let time = deltaTime/1000;
+
+		if (this.speed > -0.3)
+			this.speed = this.speed - time/2;
 	}
 
-	moveLeft(){
-		if (this.wheelAngle+ Math.PI/30.0  <= Math.PI/3.0 && this.wheelAngle + Math.PI/30.0 >= -Math.PI/3.0 ){ //60 degrees
-	this.wheelAngle = this.wheelAngle + Math.PI/30.0;
+	moveLeft(deltaTime){
+		let time = deltaTime/1000;
+		if (this.wheelAngle<= Math.PI/3.0 && this.wheelAngle >= -Math.PI/3.0 ){ //60 degrees
+	this.wheelAngle = this.wheelAngle + time*Math.PI;
 	this.frontWheel.setAngle(this.wheelAngle);
 		}
 	}
 
-	moveRight(){
-		if (this.wheelAngle - Math.PI/30.0 <= Math.PI/3.0 && this.wheelAngle - Math.PI/30.0 >= - Math.PI/3.0){ //60 degrees
-	this.wheelAngle = this.wheelAngle - Math.PI/30.0;
+	moveRight(deltaTime){
+		let time = deltaTime/1000;
+		if (this.wheelAngle <= Math.PI/3.0 && this.wheelAngle >= - Math.PI/3.0){ //60 degrees
+	this.wheelAngle = this.wheelAngle - time * Math.PI;
 	this.frontWheel.setAngle(this.wheelAngle);
 		}
 	}

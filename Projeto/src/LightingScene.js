@@ -13,28 +13,28 @@ class LightingScene extends CGFscene
 		if (this.gui.isKeyPressed("KeyW")){
 			text+=" W ";
 			keysPressed=true;
-			this.vehicle.moveForward();
+			this.vehicle.moveForward(this.deltaTime);
 		}
 		if (this.gui.isKeyPressed("KeyS")){
 			text+=" S ";
 			keysPressed=true;
-			this.vehicle.moveBackward();
+			this.vehicle.moveBackward(this.deltaTime);
 		}
 		if (this.gui.isKeyPressed("KeyA")){
 			text+=" A ";
 			keysPressed=true;
 
-			this.vehicle.moveLeft();
+			this.vehicle.moveLeft(this.deltaTime);
 		}
 		if (this.gui.isKeyPressed("KeyD")){
 			text+=" D ";
 			keysPressed=true;
-			this.vehicle.moveRight();
+			this.vehicle.moveRight(this.deltaTime);
 		}
 		if (this.gui.isKeyPressed("KeyG")){
 			text+=" G ";
 			keysPressed=true;
-			if (this.vehicle.x >= -1 && this.vehicle.x <=1 && this.vehicle.z <= -8 && this.vehicle.z >=-10){ {}
+			if (this.vehicle.x >= -1 && this.vehicle.x <=1 && this.vehicle.z <= -9 && this.vehicle.z >=-11){ {}
 			this.crane.animate(this.vehicle);
 			this.vehicleGrab = 1;
 			this.lock = true;
@@ -112,8 +112,9 @@ class LightingScene extends CGFscene
 		this.axisDisplay = function(){
 		this.axisOn = !(this.axisOn);
 		};
-
-		this.setUpdatePeriod(100);
+		
+		this.firstTime = 1;
+		this.setUpdatePeriod(1000 * 1/100);
 	};
 
 	initCameras()
@@ -152,11 +153,24 @@ class LightingScene extends CGFscene
 	};
 
 	update(currTime) {
-		if (!this.lock)
+
+		var time = Math.floor(currTime/1000);
+
+		if(this.firstTime == 1){
+      this.lastTime = currTime;
+      this.firstTime=0;
+    	}
+
+    if(this.firstTime==0){
+      this.lastTime = this.lastTime;
+      this.deltaTime = currTime - this.lastTime;
+      this.lastTime = currTime;
+      if (!this.lock)
 		this.checkKeys();
 		this.vehicle.update();
-		this.crane.update();
-		this.terrain.update();
+			this.crane.update();
+			this.terrain.update();
+    }		
 	}
 
 	updateLights()
@@ -201,7 +215,6 @@ class LightingScene extends CGFscene
 
 		// Update all lights used
 		this.updateLights();
-		this.update();
 
 		// Draw axis
 		if (this.axisOn)
