@@ -73,15 +73,15 @@ class MyInterface extends CGFinterface {
 		lightGroup.add(this.scene, 'light1');
 		lightGroup.add(this.scene, 'light2');
 		lightGroup.add(this.scene, 'light3');
-		
+
 		this.gui.add(this.scene, 'axisDisplay');
 
 		//this.gui.add(this.scene, 'speed',0,1);
 
-		this.gui.add(this.scene, 'currVehicleAppearance', { MaterialDefault:0, Mine:1, Fire:2, Golden:3});
+		this.gui.add(this.scene, 'currVehicleAppearance', { MaterialDefault:0, Mine:1, Fire:2, MetalGold:3});
 
 		this.initKeys();
-		
+
 		return true;
 	};
 

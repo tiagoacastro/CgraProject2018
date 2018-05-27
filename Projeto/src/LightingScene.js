@@ -6,7 +6,7 @@ class LightingScene extends CGFscene
 	{
 		super();
 	};
-	
+
 	//function that checks what keys are pressed and acts accordingly
 	checkKeys() {
 		var text="Keys pressed: ";
@@ -63,7 +63,7 @@ class LightingScene extends CGFscene
 
 		// Materials
 		this.materialDefault = new CGFappearance(this);
-		
+
 		//minecraft Texture
 		this.bodyAppearance = new CGFappearance(this);
    		this.bodyAppearance.loadTexture("../resources/images/stoneBrickMinecraft.png");
@@ -88,7 +88,7 @@ class LightingScene extends CGFscene
 		this.goldenAppearance.setDiffuse(0.6,0.6,0.6,1);
 		this.goldenAppearance.setSpecular(0,0.2,0.8,1);
 		this.goldenAppearance.setShininess(120);
-		
+
 		//constructors for the main objects in the scene
 		this.vehicle = new MyVehicle(this);
 		this.vehicleGrab = 0;
@@ -99,7 +99,7 @@ class LightingScene extends CGFscene
 		this.light1= true;
 		this.light2 = true;
 		this.light3 = true;
-		
+
 		//helper bool to be able to control the interface
 		this.axisOn = false;
 		//to lock the keys while the car is mid air
@@ -107,12 +107,12 @@ class LightingScene extends CGFscene
 
 		this.vehicleAppearances = [this.materialDefault,this.bodyAppearance, this.fireAppearance, this.goldenAppearance];
 		this.currVehicleAppearance = 0;
-		
+
 		//interface function that allows the button to turn on and off the axis display
 		this.axisDisplay = function(){
 		this.axisOn = !(this.axisOn);
 		};
-		
+
 		this.firstTime = 1;
 		this.setUpdatePeriod(1000 * 1/100);
 	};
@@ -170,7 +170,7 @@ class LightingScene extends CGFscene
 		this.vehicle.update();
 		this.crane.update();
 		this.terrain.update();
-		}		
+		}
 	}
 
 	updateLights()
