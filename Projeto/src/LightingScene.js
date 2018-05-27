@@ -6,7 +6,8 @@ class LightingScene extends CGFscene
 	{
 		super();
 	};
-
+	
+	//function that checks what keys are pressed and acts accordingly
 	checkKeys() {
 		var text="Keys pressed: ";
 		var keysPressed=false;
@@ -27,13 +28,9 @@ class LightingScene extends CGFscene
 			this.vehicle.moveLeft(this.deltaTime);
 		}
 		if (this.gui.isKeyPressed("KeyD")){
-			text+=" D ";
-			keysPressed=true;
 			this.vehicle.moveRight(this.deltaTime);
 		}
 		if (this.gui.isKeyPressed("KeyG")){
-			text+=" G ";
-			keysPressed=true;
 			if (this.vehicle.x >= -1 && this.vehicle.x <=1 && this.vehicle.z <= -9 && this.vehicle.z >=-11){ {}
 			this.vehicle.speed = 0;
 			this.crane.animate(this.vehicle);
@@ -42,8 +39,6 @@ class LightingScene extends CGFscene
 			} else console.log("The car is not in the right position");
 		}
 		if (this.gui.isKeyPressed("KeyJ")){
-			text+=" J ";
-			keysPressed=true;
 			this.vehicle.speed /= 1.1;
 		}
 		};
@@ -58,8 +53,6 @@ class LightingScene extends CGFscene
 
 		this.enableTextures(true);
 
-		//this.option1=true; this.option2=false; this.speed=3;
-
 		this.gl.clearColor(0.0, 0.0, 0.0, 1.0);
 		this.gl.clearDepth(100.0);
 		this.gl.enable(this.gl.DEPTH_TEST);
@@ -70,7 +63,8 @@ class LightingScene extends CGFscene
 
 		// Materials
 		this.materialDefault = new CGFappearance(this);
-
+		
+		//minecraft Texture
 		this.bodyAppearance = new CGFappearance(this);
    		this.bodyAppearance.loadTexture("../resources/images/stoneBrickMinecraft.png");
 		this.bodyAppearance.setTextureWrap("REPEAT", "REPEAT");
@@ -79,6 +73,7 @@ class LightingScene extends CGFscene
 		this.bodyAppearance.setSpecular(0,0.2,0.8,1);
 		this.bodyAppearance.setShininess(120);
 
+		//ferrari texture
 		this.fireAppearance = new CGFappearance(this);
    		this.fireAppearance.loadTexture("../resources/images/fire.png");
 		this.fireAppearance.setAmbient(0.3,0.3,0.3,1);
@@ -86,6 +81,7 @@ class LightingScene extends CGFscene
 		this.fireAppearance.setSpecular(0,0.2,0.8,1);
 		this.fireAppearance.setShininess(120);
 
+		//pure gold texture
 		this.goldenAppearance = new CGFappearance(this);
    		this.goldenAppearance.loadTexture("../resources/images/golden.png");
 		this.goldenAppearance.setAmbient(0.3,0.3,0.3,1);
@@ -93,7 +89,7 @@ class LightingScene extends CGFscene
 		this.goldenAppearance.setSpecular(0,0.2,0.8,1);
 		this.goldenAppearance.setShininess(120);
 		
-
+		//constructors for the main objects in the scene
 		this.vehicle = new MyVehicle(this);
 		this.vehicleGrab = 0;
 		this.terrain = new MyTerrain(this);
@@ -103,13 +99,16 @@ class LightingScene extends CGFscene
 		this.light1= true;
 		this.light2 = true;
 		this.light3 = true;
-
+		
+		//helper bool to be able to control the interface
 		this.axisOn = false;
+		//to lock the keys while the car is mid air
 		this.lock = false;
 
 		this.vehicleAppearances = [this.materialDefault,this.bodyAppearance, this.fireAppearance, this.goldenAppearance];
 		this.currVehicleAppearance = 0;
-
+		
+		//interface function that allows the button to turn on and off the axis display
 		this.axisDisplay = function(){
 		this.axisOn = !(this.axisOn);
 		};
@@ -158,20 +157,20 @@ class LightingScene extends CGFscene
 		var time = Math.floor(currTime/1000);
 
 		if(this.firstTime == 1){
-      this.lastTime = currTime;
-      this.firstTime=0;
+      		this.lastTime = currTime;
+      		this.firstTime=0;
     	}
 
-    if(this.firstTime==0){
-      this.lastTime = this.lastTime;
-      this.deltaTime = currTime - this.lastTime;
-      this.lastTime = currTime;
-      if (!this.lock)
-		this.checkKeys();
+		if(this.firstTime==0){
+		  this.lastTime = this.lastTime;
+		  this.deltaTime = currTime - this.lastTime;
+		  this.lastTime = currTime;
+		  if (!this.lock)
+			this.checkKeys();
 		this.vehicle.update();
-			this.crane.update();
-			this.terrain.update();
-    }		
+		this.crane.update();
+		this.terrain.update();
+		}		
 	}
 
 	updateLights()
@@ -221,10 +220,12 @@ class LightingScene extends CGFscene
 		if (this.axisOn)
 		this.axis.display();
 
+		//crane display
 		this.pushMatrix();
 		this.crane.display();
 		this.popMatrix();
 
+		//car display, if grabbed, not display in the scene but in the crane
 		if (this.vehicleGrab == 0) {
 		this.pushMatrix();
 		this.translate(0,1.2,0);
@@ -233,6 +234,7 @@ class LightingScene extends CGFscene
 		this.popMatrix();
 		}
 
+		//terrain display
 		this.pushMatrix();
 		this.rotate(-1.57,1,0,0);
 		this.scale(50,50,1);
