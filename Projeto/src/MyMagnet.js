@@ -20,11 +20,10 @@ class MyMagnet extends CGFobject
 		this.magnetAppearance.setShininess(120);
 
 	};
-
+//sets rotation
 	setRotateV(rotateV) {
 		this.rotateV = rotateV;
 	}
-
 
 	display() {
 
@@ -35,7 +34,7 @@ class MyMagnet extends CGFobject
 		this.magnetAppearance.apply();
 		this.secCylinder.display();
         this.scene.popMatrix();
-		
+
 		this.scene.pushMatrix();
 		this.scene.translate(2.2,0,0.25);
         this.scene.scale(3.5,0.6,0.6);
@@ -47,7 +46,7 @@ class MyMagnet extends CGFobject
 	    this.scene.translate(4,-0,0.25);
 	    this.scene.rotate(-this.rotateV,0,0,1);
 	    this.scene.rotate(Math.PI/2.0,1,0,0);
-	   	
+
 	    this.scene.pushMatrix();
 	    this.scene.translate(0,0,1);
 	    this.scene.scale(2,2,0.5);
@@ -55,7 +54,7 @@ class MyMagnet extends CGFobject
 	    this.metal.display();
 	    this.scene.popMatrix();
 
-	    
+
 	    this.scene.scale(0.05,0.05,1);
 	    this.magnetAppearance.apply();
 	    this.wire.display();

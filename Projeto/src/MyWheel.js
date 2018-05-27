@@ -9,7 +9,7 @@ class MyWheel extends CGFobject
 	constructor(scene, texture)
 	{
 		super(scene);
-		
+
 		this.texture = texture;
 		this.initBuffers();
 	};
@@ -24,7 +24,7 @@ class MyWheel extends CGFobject
 
     this.circle = new MyCircle(this.scene,30);
     this.circle.initBuffers();
-	
+
 	if(this.texture){
 	this.wheelAppearance = new CGFappearance(this.scene);
     this.wheelAppearance.loadTexture("../resources/images/wheel.jpg");
@@ -48,10 +48,12 @@ class MyWheel extends CGFobject
 
  };
 
+	//sets wheel angle
  setAngle(angle){
  	this.angle = angle;
  }
 
+//sets wheel rotation
  setRotateWheel(rotateWheel){
  this.rotateWheel = rotateWheel;
  }
