@@ -20,6 +20,7 @@ serialInclude([
 	'MyLamp.js',
 	'MyCrane.js',
 	'MyMagnet.js',
+	'MyTrapezoid.js',
 
 	main=function() {
 		var app = new CGFapplication(document.body);

@@ -13,7 +13,6 @@ class MyCrane extends CGFobject
 		this.base = new MyWheel(this.scene,0);
 		this.first = new MyUnitCubeQuad(this.scene);
 		this.magnet = new MyMagnet(this.scene);
-		this.vehicle = 0;
 		
 		this.rotateCar = 0;
 		this.rotateH = 0;
@@ -58,24 +57,26 @@ class MyCrane extends CGFobject
 			this.rotateH = 0;
 			this.rotateCar = 0;
 			this.carInPlace = false;
+		
 		}
 	}
 
 	animate(vehicle){
-		this.vehicle = vehicle;
+		this.scene.vehicle = vehicle;
 		this.currState = 1;
 	}
 
 	vehicleToMagnet() {
-		this.vehicle.setY(0.6);
+		this.scene.vehicle.setY(1);
 		this.currState = 4;
 	}
 
 	vehicleToGround() {
-		this.vehicle.setY(0);
+		this.scene.vehicle.setY(0);
 		if (!this.carInPlace) {
-			this.vehicle.carOrientation -= Math.PI;
+			this.scene.vehicle.carOrientation -= Math.PI;
 			this.carInPlace = true;
+			this.scene.vehicleGrab = 0;
 		}
 	}
 
@@ -100,8 +101,7 @@ class MyCrane extends CGFobject
     			break;
 			case 5:
 				this.vehicleToGround();
-				this.vehicle.x = (Math.sin((Math.PI/8.0 )*7)+4.5)*2;
-    			this.scene.setVehicle(this.vehicle);
+				this.scene.vehicle.x = (Math.sin((Math.PI/8.0 )*7)+4.5)*2;
     			this.scene.lock = false;
     			this.rotateUp();
     			break;
@@ -133,8 +133,6 @@ class MyCrane extends CGFobject
         this.scene.translate(7.8,7.6,-10.2);
         this.magnet.display();
         this.scene.popMatrix();
-		
-		if(this.vehicle != 0){
 
 			if(this.currState == 3) {
 				this.scene.popMatrix();
@@ -142,7 +140,7 @@ class MyCrane extends CGFobject
 				this.scene.translate(5,1,-10);
 				this.scene.rotate(this.rotateCar,0,1,0);
 				this.scene.translate(-5,-1,10);
-				this.vehicle.display();
+				this.scene.vehicle.display();
         	} else if (this.currState != 0 && this.currState !=5) {
         		this.scene.popMatrix();
         		this.scene.pushMatrix();
@@ -150,9 +148,8 @@ class MyCrane extends CGFobject
 				this.scene.translate(5,1,-10);
 				this.scene.rotate(this.rotateCar,0,1,0);
 				this.scene.translate(-5,-1,10);
-				this.vehicle.display();
+				this.scene.vehicle.display();
         	}	
-  		}
 	this.scene.popMatrix();
   	}
 }

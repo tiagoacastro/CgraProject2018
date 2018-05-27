@@ -43,10 +43,8 @@ class LightingScene extends CGFscene
 		if (this.gui.isKeyPressed("KeyJ")){
 			text+=" J ";
 			keysPressed=true;
-			this.crane.rotateDown();
+			this.vehicle.speed /= 1.1;
 		}
-		if (keysPressed)
-			console.log(text);
 		};
 
 	init(application)
@@ -82,11 +80,18 @@ class LightingScene extends CGFscene
 
 		this.fireAppearance = new CGFappearance(this);
    		this.fireAppearance.loadTexture("../resources/images/fire.png");
-		//this.fireAppearance.setTextureWrap("REPEAT", "REPEAT");
 		this.fireAppearance.setAmbient(0.3,0.3,0.3,1);
 		this.fireAppearance.setDiffuse(0.6,0.6,0.6,1);
 		this.fireAppearance.setSpecular(0,0.2,0.8,1);
 		this.fireAppearance.setShininess(120);
+
+		this.goldenAppearance = new CGFappearance(this);
+   		this.goldenAppearance.loadTexture("../resources/images/golden.png");
+		this.goldenAppearance.setAmbient(0.3,0.3,0.3,1);
+		this.goldenAppearance.setDiffuse(0.6,0.6,0.6,1);
+		this.goldenAppearance.setSpecular(0,0.2,0.8,1);
+		this.goldenAppearance.setShininess(120);
+		
 
 		this.vehicle = new MyVehicle(this);
 		this.vehicleGrab = 0;
@@ -101,7 +106,7 @@ class LightingScene extends CGFscene
 		this.axisOn = false;
 		this.lock = false;
 
-		this.vehicleAppearances = [this.materialDefault,this.bodyAppearance, this.fireAppearance];
+		this.vehicleAppearances = [this.materialDefault,this.bodyAppearance, this.fireAppearance, this.goldenAppearance];
 		this.currVehicleAppearance = 0;
 
 		this.axisDisplay = function(){
@@ -158,11 +163,6 @@ class LightingScene extends CGFscene
 	{
 		for (var i = 0; i < this.lights.length; i++)
 			this.lights[i].update();
-	}
-
-	setVehicle(vehicle){
-		this.vehicle = vehicle;
-		this.vehicleGrab = 0;
 	}
 
 	display()

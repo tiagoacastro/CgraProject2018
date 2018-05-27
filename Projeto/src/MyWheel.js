@@ -59,33 +59,33 @@ class MyWheel extends CGFobject
  display()
  {
    this.scene.pushMatrix();
-   this.materialDefault.apply();
-   this.scene.scale(0.5,0.5,0.5);
-   if(this.texture)
-   this.tireAppearance.apply();
-   this.scene.rotate(this.angle,0,1,0);
-   this.scene.rotate(this.rotateWheel,0,0,1);
-   this.cylinder.display();
+	   this.materialDefault.apply();
+	   this.scene.scale(0.5,0.5,0.5);
+	   if(this.texture)
+	   	this.tireAppearance.apply();
+	   this.scene.rotate(this.angle,0,1,0);
+	   this.scene.rotate(this.rotateWheel,0,0,1);
+	   this.cylinder.display();
    this.scene.popMatrix();
 
    this.scene.pushMatrix();
-   this.scene.rotate(this.angle,0,1,0);
-    this.scene.rotate(this.rotateWheel,0,0,1);
-   this.scene.rotate(3.14,1,0,0);
-   this.scene.scale(0.5,0.5,0.5);
-   if(this.texture)
-	 this.wheelAppearance.apply();
-   this.circle.display();
+	   this.scene.rotate(this.angle,0,1,0);
+	   this.scene.rotate(this.rotateWheel,0,0,1);
+	   this.scene.rotate(3.14,1,0,0);
+	   this.scene.scale(0.5,0.5,0.5);
+	   if(this.texture)
+		 this.wheelAppearance.apply();
+	   this.circle.display();
    this.scene.popMatrix();
 
    this.scene.pushMatrix();
-   this.scene.rotate(this.angle,0,1,0);
-    this.scene.rotate(this.rotateWheel,0,0,1);
-   this.scene.scale(0.5,0.5,0.5);
-   this.scene.translate(0, 0, 1);
-   if(this.texture)
-   this.wheelAppearance.apply();
-   this.circle.display();
+	   this.scene.rotate(this.angle,0,1,0);
+	   this.scene.rotate(this.rotateWheel,0,0,1);
+	   this.scene.scale(0.5,0.5,0.5);
+	   this.scene.translate(0, 0, 1);
+	   if(this.texture)
+	   	this.wheelAppearance.apply();
+	   this.circle.display();
    this.scene.popMatrix();
 
 
